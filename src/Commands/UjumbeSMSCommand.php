@@ -16,17 +16,17 @@ class UjumbeSMSCommand extends Command
         $this->comment('All done');
 
         Ujumbe::create([
-                'uuid'                 => '',
-                'response_code'        => '',
-                'response_type'        => '',
+                'uuid' => '',
+                'response_code' => '',
+                'response_type' => '',
                 'response_description' => '',
-                'recipients'           => '',
-                'credits_deducted'     => '',
-                'available_credits'    => '',
-                'user_email'           => '',
-                'message'              => '',
-                'message_sent_at'      => '',
-                'meta'                 => '',
+                'recipients' => '',
+                'credits_deducted' => '',
+                'available_credits' => '',
+                'user_email' => '',
+                'message' => '',
+                'message_sent_at' => '',
+                'meta' => '',
         ]);
 
         return self::SUCCESS;
