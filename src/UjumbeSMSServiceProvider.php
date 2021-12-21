@@ -9,7 +9,6 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class UjumbeSMSServiceProvider extends PackageServiceProvider
 {
-
     public function boot()
     {
         $this->registerRoutes();
@@ -26,7 +25,7 @@ class UjumbeSMSServiceProvider extends PackageServiceProvider
     protected function routeConfiguration()
     {
         return [
-                'prefix'     => config('ujumbesms.prefix'),
+                'prefix' => config('ujumbesms.prefix'),
                 'middleware' => config('ujumbesms.middleware'),
         ];
     }
