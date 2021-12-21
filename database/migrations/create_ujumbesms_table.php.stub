@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up()
+    {
+        Schema::create('ujumbesms', function (Blueprint $table) {
+            $table->id();
+
+            $table->uuid('uuid');
+            $table->string('response_code');
+            $table->string('response_type');
+            $table->string('response_description');
+            $table->longText('recipients');
+            $table->string('credits_deducted');
+            $table->string('available_credits');
+            $table->string('user_email');
+            $table->string('message');
+            $table->string('message_sent_at');
+            $table->longText('meta')->nullable();
+            $table->timestamps();
+        });
+    }
+};
