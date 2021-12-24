@@ -10,7 +10,6 @@ use function implode;
 use function json_decode;
 use function json_encode;
 use Kenmush\UjumbeSMS\Models\Ujumbe;
-use function ray;
 
 class UjumbeSMS
 {
@@ -57,7 +56,6 @@ class UjumbeSMS
 
             return true;
         } catch (Exception $exception) {
-
             throw new Exception($exception);
         }
     }

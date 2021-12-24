@@ -2,11 +2,11 @@
 
 namespace Kenmush\UjumbeSMS;
 
+use function database_path;
 use Illuminate\Support\Facades\Route;
 use Kenmush\UjumbeSMS\Commands\UjumbeSMSCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use function database_path;
 
 class UjumbeSMSServiceProvider extends PackageServiceProvider
 {
@@ -17,10 +17,11 @@ class UjumbeSMSServiceProvider extends PackageServiceProvider
 //        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         if ($this->app->runningInConsole()) {
-
             $this->publishes([
-                    __DIR__.'/../database/migrations/create_ujumbesms_table.php.stub' => database_path('migrations/'.date('Y_m_d_His',
-                                    time())
+                    __DIR__.'/../database/migrations/create_ujumbesms_table.php.stub' => database_path('migrations/'.date(
+                        'Y_m_d_His',
+                        time()
+                    )
                             .'_create_ujumbesms_table.php'),
             ], 'migrations');
 
@@ -35,7 +36,6 @@ class UjumbeSMSServiceProvider extends PackageServiceProvider
             $this->publishes([
                     __DIR__.'/../resources/assets' => public_path('ujumbesms'),
             ], 'assets');
-
         }
     }
 
@@ -49,7 +49,7 @@ class UjumbeSMSServiceProvider extends PackageServiceProvider
     protected function routeConfiguration()
     {
         return [
-                'prefix'     => config('ujumbesms.prefix'),
+                'prefix' => config('ujumbesms.prefix'),
                 'middleware' => config('ujumbesms.middleware'),
         ];
     }

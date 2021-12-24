@@ -9,7 +9,7 @@ class UjumbeSMSController extends Controller
 {
     public function index()
     {
-        return view('ujumbesms::index',[
+        return view('ujumbesms::index', [
                 'totalSms' => Ujumbe::count(),
                 'messages' => Ujumbe::paginate(20),
         ]);
