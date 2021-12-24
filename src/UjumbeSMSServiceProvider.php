@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Kenmush\UjumbeSMS\Commands\UjumbeSMSCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use function database_path;
 
 class UjumbeSMSServiceProvider extends PackageServiceProvider
 {
@@ -13,6 +14,29 @@ class UjumbeSMSServiceProvider extends PackageServiceProvider
     {
         $this->registerRoutes();
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'ujumbesms');
+//        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        if ($this->app->runningInConsole()) {
+
+            $this->publishes([
+                    __DIR__.'/../database/migrations/create_ujumbesms_table.php.stub' => database_path('migrations/'.date('Y_m_d_His',
+                                    time())
+                            .'_create_ujumbesms_table.php'),
+            ], 'migrations');
+
+            $this->publishes([
+                    __DIR__.'/../config/ujumbesms.php' => config_path('ujumbesms.php'),
+            ], 'config');
+
+            $this->publishes([
+                    __DIR__.'/../resources/views' => resource_path('views/vendor/ujumbesms'),
+            ], 'views');
+
+            $this->publishes([
+                    __DIR__.'/../resources/assets' => public_path('ujumbesms'),
+            ], 'assets');
+
+        }
     }
 
     protected function registerRoutes()
@@ -25,9 +49,14 @@ class UjumbeSMSServiceProvider extends PackageServiceProvider
     protected function routeConfiguration()
     {
         return [
-                'prefix' => config('ujumbesms.prefix'),
+                'prefix'     => config('ujumbesms.prefix'),
                 'middleware' => config('ujumbesms.middleware'),
         ];
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/ujumbesms.php', 'ujumbesms');
     }
 
     public function configurePackage(Package $package): void

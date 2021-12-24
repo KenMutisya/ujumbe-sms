@@ -54,12 +54,9 @@ class UjumbeSMS
                     'meta' => json_encode($response),
             ]);
 
-            ray()->clearAll();
-            ray($ujumbe);
 
             return true;
         } catch (Exception $exception) {
-            ray($exception);
 
             throw new Exception($exception);
         }
