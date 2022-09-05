@@ -3,6 +3,7 @@
 namespace Kenmush\UjumbeSMS;
 
 use function database_path;
+
 use Illuminate\Support\Facades\Route;
 use Kenmush\UjumbeSMS\Commands\UjumbeSMSCommand;
 use Spatie\LaravelPackageTools\Package;

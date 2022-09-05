@@ -3,6 +3,7 @@
 namespace Kenmush\UjumbeSMS\Http\Controllers;
 
 use Kenmush\UjumbeSMS\Models\Ujumbe;
+
 use function view;
 
 class UjumbeSMSController extends Controller
