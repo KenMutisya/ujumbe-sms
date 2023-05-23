@@ -15,7 +15,7 @@ class UjumbeSMSServiceProvider extends PackageServiceProvider
     {
         $this->registerRoutes();
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'ujumbesms');
-//        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        //        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
